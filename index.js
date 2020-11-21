@@ -16,29 +16,29 @@ const inquirer = require('inquirer');
 // function to write README file
 function writeToFile(fileName, data) {
     const userResponse = `
-    # ${data.repoName}
+# ${data.repoName}
 
-    ## Motivation
-    ${data.motivation}
+## Motivation
+${data.motivation}
 
-    ## How to Use
-    ${data.howToUse}
+## How to Use
+${data.howToUse}
 
-    ## Installation
-    ${data.installation}
+## Installation
+${data.installation}
 
-    ## Mock-Up
-    ![${data.imageAlt}](${data.imageLink})
+## Mock-Up
+![${data.imageAlt}](${data.imageLink})
 
-    ## Deployment
-    Link to [GitHub Repository](${data.gitHubURL})
-    link to [Live URL](${data.liveURL})
+## Deployment
+* Link to [GitHub Repository](${data.gitHubURL})
+* Link to [Live URL](${data.liveURL})
 
-    ## How to Report Issues
-    ${data.reportIssues}
+## How to Report Issues
+${data.reportIssues}
 
-    ## How to Contribute
-    ${data.contribute}
+## How to Contribute
+${data.contribute}
     `
     fs.writeFile('README.md', userResponse, (err) =>
         err ? console.log(err) : console.log('complete')
