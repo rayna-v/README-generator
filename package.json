@@ -1,0 +1,27 @@
+{
+  "name": "readme-generator",
+  "version": "1.0.0",
+  "description": "This application allows users to generate a high quality README file using a series of command line prompts.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayna-v/README-generator.git"
+  },
+  "keywords": [
+    "README",
+    "generator",
+    "markdown"
+  ],
+  "author": "Rayna Veuleman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rayna-v/README-generator/issues"
+  },
+  "homepage": "https://github.com/rayna-v/README-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3"
+  }
+}
