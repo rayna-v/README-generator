@@ -1,3 +1,7 @@
+// requiring file system and inquirer package
+const fs = require('fs');
+const inquirer = require('inquirer');
+
 // array of questions for user
 const questions = ['What is the name of your project or repo?',
     'What is your motivation behind this app?',
@@ -10,10 +14,9 @@ const questions = ['What is the name of your project or repo?',
     'How can a user report issues?',
     'How can a user make contributions?',
 ];
-const fs = require('fs');
-const inquirer = require('inquirer');
 
-// function to write README file
+
+// function to dynamically write README file
 function writeToFile(fileName, data) {
     const userResponse = `
 # ${data.repoName}
@@ -40,6 +43,7 @@ ${data.reportIssues}
 ## How to Contribute
 ${data.contribute}
     `
+    // writing file on fs using 'userResponse' and logging and console.logging either an error or 'complete'
     fs.writeFile('README.md', userResponse, (err) =>
         err ? console.log(err) : console.log('complete')
     )
@@ -47,12 +51,13 @@ ${data.contribute}
 
 // function to initialize program
 function init() {
-
+    // constructor functions for Inquirer prompts to run in command-line
     function Prompts(type, message, name) {
         this.type = type;
         this.message = message;
         this.name = name;
     }
+    // new prompts
     const question1 = new Prompts('input', questions[0], 'repoName')
     const question2 = new Prompts('input', questions[1], 'motivation')
     const question3 = new Prompts('input', questions[2], 'howToUse')
@@ -67,7 +72,6 @@ function init() {
 
     inquirer
         .prompt([
-
             {
                 type: question1.type,
                 message: question1.message,
@@ -120,7 +124,7 @@ function init() {
             },
 
         ])
-
+        // returned data is then used to write to json file and READMe Markdown
         .then((data) => {
             const fileName = `${data.repoName.toLowerCase().split(" ").join("-")}.json`;
             writeToFile(fileName, data);
